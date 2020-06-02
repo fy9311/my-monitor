@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端监控demo</title>
+</head>
+<body>
+    <div id="content">
+        <div class="box">
+            <input onclick="errorJs()" type="button" value="点击js报错">
+            <input onclick="errorPromise()" type="button" value="点击promise报错">
+
+        </div>
+    </div>
+
+    <script>
+        function errorJs() {
+            window.asd.error = 'error';
+        }
+
+        function errorPromise() {
+
+        }
+
+    </script>
+</body>
+</html>
