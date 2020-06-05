@@ -32,8 +32,7 @@ class sendTracker {
                 logs[key] = `${logs[key]}`;
             }
         }
-        console.log(logs);
-        // console.log(JSON.stringify(logs, null, 2));
+        
         let body = JSON.stringify({
             __logs__: [logs]
         });
@@ -58,7 +57,6 @@ class sendTracker {
             console.log(this.xhr.response);
         }
 
-        // let data = 
     }
 }
 
