@@ -16,7 +16,17 @@ module.exports = {
     },
     // devserver静态文件目录
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist')
+        contentBase: path.resolve(__dirname, 'dist'),
+        // 配置路由
+        before(app, server) {
+            app.get('/success', function (req, res) {
+                res.json({id: 1});
+            });
+
+            app.post('/error', function (req, res) {
+                res.sendStatus(500);
+            })
+        }
     },
     plugins: [
         // 自动打包出html文件
