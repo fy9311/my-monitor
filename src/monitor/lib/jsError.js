@@ -8,10 +8,10 @@ export function injectJsError() {
     // 监听全局未捕获错误
     window.addEventListener('error', function (event) {
         // console.log(event);
-        
+
         let lastEvent = getLastEvent();
         let errData;
-        if(event.target && event.target.src || event.target.href) {
+        if (event.target && event.target.src || event.target.href) {
             // 资源加载错误
             errData = {
                 kind: 'stability', // 类别-稳定性
@@ -35,7 +35,7 @@ export function injectJsError() {
             }
         }
         // console.log(errData);
-        
+
         // 上报数据
         tracker.send(errData);
     }, true)
@@ -51,9 +51,7 @@ export function injectJsError() {
         let {
             reason
         } = event;
-        
-        console.log(event);
-        
+
         if (typeof reason === 'string') {
             message = reason;
         } else if (typeof reason === 'object') {
@@ -69,19 +67,19 @@ export function injectJsError() {
             }
         }
 
-        tracker.send({//未捕获的promise错误
-            kind: 'stability',//稳定性指标
-            type: 'error',//jsError
-            errorType: 'promiseError',//unhandledrejection
-            message: message,//标签名
+        tracker.send({ //未捕获的promise错误
+            kind: 'stability', //稳定性指标
+            type: 'error', //jsError
+            errorType: 'promiseError', //unhandledrejection
+            message: message, //标签名
             filename: filename,
-            position: line + ':' + column,//行列
+            position: line + ':' + column, //行列
             stack,
             selector: lastEvent ? getSelector(lastEvent.path || lastEvent.target) : ''
         })
-    
+
     }, true)
 
-    
+
     // console.error
 }

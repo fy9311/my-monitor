@@ -6,9 +6,13 @@ export function injectXhr() {
     // 重写全局open
     let oldOpen = XMLHttpRequest.prototype.open;
 
-    XMLHttpRequest.prototype.open = function (method, url ,async) {
-        if(!url.match(/logstores/)){
-            this.logData = {method, url, async};
+    XMLHttpRequest.prototype.open = function (method, url, async) {
+        if (!url.match(/logstores/)) {
+            this.logData = {
+                method,
+                url,
+                async
+            };
         }
         return oldOpen.apply(this, arguments);
     }
@@ -17,10 +21,9 @@ export function injectXhr() {
     let oldSend = XMLHttpRequest.prototype.send;
 
     XMLHttpRequest.prototype.send = function (body) {
-        if(this.logData) {
+        if (this.logData) {
             let startTime = Date.now(); // 记录开始时间
             let handler = (type) => (event) => {
-                console.log(event)
                 let duration = Date.now() - startTime; // 计算持续时间
                 let status = this.status;
                 let statusText = this.statusText;
@@ -39,11 +42,10 @@ export function injectXhr() {
             this.addEventListener('error', handler('error'), false);
             this.addEventListener('load', handler('error'), false);
             this.addEventListener('abort', handler('abort'), false);
-        //    12
         }
-        
+
         return oldSend.apply(this, arguments);
     }
 
-    
+
 }

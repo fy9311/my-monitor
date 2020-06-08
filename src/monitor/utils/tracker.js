@@ -8,7 +8,7 @@ const logstoreName = 'monitor-store';
 const userAgent = require('user-agent');
 
 // 为data添加额外信息
-function getExtraData () {
+function getExtraData() {
     return {
         title: document.title,
         // url: location.url,
@@ -26,20 +26,23 @@ class sendTracker {
 
     send(data = {}) {
         let extraData = getExtraData();
-        let logs = { ...extraData, ...data };
+        let logs = {
+            ...extraData,
+            ...data
+        };
         for (let key in logs) {
             if (typeof logs[key] === 'number') {
                 logs[key] = `${logs[key]}`;
             }
         }
-        
+
         let body = JSON.stringify({
             __logs__: [logs]
         });
-        
+
         this.xhr.open('POST', this.url, true);
         // 版本
-        this.xhr.setRequestHeader('x-log-apiversion','0.6.0');
+        this.xhr.setRequestHeader('x-log-apiversion', '0.6.0');
         // 请求体大小
         this.xhr.setRequestHeader('x-log-bodyrawsize', body.length);
         // 压缩算法
@@ -50,11 +53,11 @@ class sendTracker {
         this.xhr.send(body);
         // 错误监听
         this.xhr.onerror = () => {
-            console.log(this.xhr.response);
+            // console.log(this.xhr.response);
         };
         // 完成监听
         this.xhr.onload = () => {
-            console.log(this.xhr.response);
+            // console.log(this.xhr.response);
         }
 
     }
