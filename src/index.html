@@ -16,9 +16,11 @@
             <input onclick="successAjax()" type="button" value="点击ajax成功">
             <input onclick="errorAjax()" type="button" value="点击ajax报错">
         </div>
+        <div class="box1" style="word-break: break-all;"></div>
     </div>
 
     <script>
+        // 
         function errorJs() {
             window.asd.error = 'error';
         }
@@ -48,6 +50,8 @@
             }
             xhr.send();
         }
+
+        // document.getElementsByClassName('box1')[0].innerHTML = '@'.repeat(10000)
     </script>
     <!-- <script src="errorsrc.js"></script> -->
 </body>
