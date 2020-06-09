@@ -7,7 +7,11 @@ import {
 import {
     blank
 } from './lib/blank';
+import {
+  loadTime
+} from './lib/loadTime';
 
 injectJsError();
 injectXhr();
 blank();
+loadTime();
