@@ -9,14 +9,14 @@
 </head>
 
 <body>
-  <div id="content">
+  <div id="content" style="height: 500px;background-color: aqua;">
     <div class="box">
       <input onclick="errorJs()" type="button" value="点击js报错">
       <input onclick="errorPromise()" type="button" value="点击promise报错">
       <input onclick="successAjax()" type="button" value="点击ajax成功">
       <input onclick="errorAjax()" type="button" value="点击ajax报错">
     </div>
-    <div class="box1" style="word-break: break-all;"></div>
+    <div class="box1" style="word-break: break-all;height: 500px;background-color: aqua;"></div>
   </div>
 
   <script>
@@ -56,7 +56,7 @@
     setTimeout(() => {
       let h1 = document.createElement('h1');
       h1.innerHTML = '有意义的内容';
-      h1.setAttribute('elementtiming', 'meaningful');
+      h1.setAttribute('elementtiming', 'meaningful'); // 设置有意义标签
       document.getElementById('content').appendChild(h1);
 
     }, 2000)
