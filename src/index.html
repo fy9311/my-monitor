@@ -2,59 +2,67 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>前端监控demo</title>
-    <!-- <link href="http://123.asd/1.css" rel="stylesheet"> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前端监控demo</title>
+  <!-- <link href="http://123.asd/1.css" rel="stylesheet"> -->
 </head>
 
 <body>
-    <div id="content">
-        <div class="box">
-            <input onclick="errorJs()" type="button" value="点击js报错">
-            <input onclick="errorPromise()" type="button" value="点击promise报错">
-            <input onclick="successAjax()" type="button" value="点击ajax成功">
-            <input onclick="errorAjax()" type="button" value="点击ajax报错">
-        </div>
-        <div class="box1" style="word-break: break-all;"></div>
+  <div id="content">
+    <div class="box">
+      <input onclick="errorJs()" type="button" value="点击js报错">
+      <input onclick="errorPromise()" type="button" value="点击promise报错">
+      <input onclick="successAjax()" type="button" value="点击ajax成功">
+      <input onclick="errorAjax()" type="button" value="点击ajax报错">
     </div>
+    <div class="box1" style="word-break: break-all;"></div>
+  </div>
 
-    <script>
-        // 
-        function errorJs() {
-            window.asd.error = 'error';
-        }
+  <script>
+    // 
+    function errorJs() {
+      window.asd.error = 'error';
+    }
 
-        function errorPromise() {
-            new Promise(function (resolve, reject) {
-                console.log(asd);
-            })
-        }
+    function errorPromise() {
+      new Promise(function (resolve, reject) {
+        console.log(asd);
+      })
+    }
 
-        function successAjax() {
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', '/success', true);
-            xhr.responseType = 'json';
-            xhr.onload = function () {
-                console.log(xhr.response);
-            }
-            xhr.send();
-        }
+    function successAjax() {
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', '/success', true);
+      xhr.responseType = 'json';
+      xhr.onload = function () {
+        console.log(xhr.response);
+      }
+      xhr.send();
+    }
 
-        function errorAjax() {
-            let xhr = new XMLHttpRequest();
-            xhr.open('POST', '12./error', true);
-            xhr.responseType = 'json';
-            xhr.onerror = function (error) {
-                console.log(error);
-            }
-            xhr.send();
-        }
+    function errorAjax() {
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', '12./error', true);
+      xhr.responseType = 'json';
+      xhr.onerror = function (error) {
+        console.log(error);
+      }
+      xhr.send();
+    }
 
-        // document.getElementsByClassName('box1')[0].innerHTML = '@'.repeat(10000)
+    // document.getElementsByClassName('box1')[0].innerHTML = '@'.repeat(10000)
 
-    </script>
-    <!-- <script src="errorsrc.js"></script> -->
+    setTimeout(() => {
+      let h1 = document.createElement('h1');
+      h1.innerHTML = '有意义的内容';
+      h1.setAttribute('elementtiming', 'meaningful');
+      document.getElementById('content').appendChild(h1);
+
+    }, 2000)
+
+  </script>
+  <!-- <script src="errorsrc.js"></script> -->
 </body>
 
 </html>

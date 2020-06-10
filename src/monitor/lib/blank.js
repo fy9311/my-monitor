@@ -32,8 +32,6 @@ export function blank() {
         (window.innerWidth * i) / 100,
         window.innerHeight / 2
       );
-  
-      
       let yElements = document.elementsFromPoint(
         window.innerWidth / 2,
         (window.innerHeight * i) / 100
@@ -41,8 +39,6 @@ export function blank() {
       isWrapper(xElements[0])
       isWrapper(yElements[0])
     }
-    // debugger
-    console.log(emptyPoints)
     if (emptyPoints > 16) {
       tracker.send({
         kind: 'stability',
