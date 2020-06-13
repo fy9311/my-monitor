@@ -14,6 +14,9 @@ import {
   loadTime
 } from './lib/loadTime';
 import {
+  getPerformance
+} from './lib/loadTime';
+import {
   vueError
 } from './lib/vueError';
 
@@ -23,4 +26,5 @@ ajaxError();
 vueError();
 // blankScreen();
 // loadTime();
+getPerformance()
 
