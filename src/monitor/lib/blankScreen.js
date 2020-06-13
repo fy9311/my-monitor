@@ -2,7 +2,7 @@
 import tracker from "../utils/tracker";
 import onload from '../utils/onload';
 
-export function blank() {
+export function blankScreen() {
   // 哪些算是空白节点
   let wrapperElements = ["html", "body", "#content", ".box"];
   // 空节点计数
@@ -16,7 +16,7 @@ export function blank() {
   }
 
   function getSelector(el) {
-  
+
     if (el.id) {
       return "#" + el.id;
     } else if (el.className) {
@@ -46,11 +46,11 @@ export function blank() {
         emptyPoints,
         screen: window.screen.width + 'x' + window.screen.height,
         viewPoint: window.innerWidth + 'x' + window.innerHeight,
-        
+
       })
     }
   })
-  
+
 
 }
 

@@ -1,17 +1,26 @@
 import {
-    injectJsError
+  jsError
 } from './lib/jsError';
 import {
-    injectXhr
-} from './lib/xhr';
+  promiseError
+} from './lib/promiseError';
 import {
-    blank
-} from './lib/blank';
+  ajaxError
+} from './lib/ajaxError';
+import {
+  blankScreen
+} from './lib/blankScreen';
 import {
   loadTime
 } from './lib/loadTime';
+import {
+  vueError
+} from './lib/vueError';
 
-injectJsError();
-injectXhr();
-blank();
-loadTime();
+jsError();
+promiseError();
+ajaxError();
+vueError();
+// blankScreen();
+// loadTime();
+

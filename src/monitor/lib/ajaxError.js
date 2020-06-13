@@ -1,5 +1,5 @@
 import tracker from "../utils/tracker";
-export function injectXhr() {
+export function ajaxError() {
   // 缓存当前全局方法
   let XMLHttpRequest = window.XMLHttpRequest;
 
@@ -15,7 +15,7 @@ export function injectXhr() {
         async,
       };
     }
-    return oldOpen.apply(this, arguments); 
+    return oldOpen.apply(this, arguments);
   };
 
   // 重写全局send

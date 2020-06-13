@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>前端监控demo</title>
   <!-- <link href="http://123.asd/1.css" rel="stylesheet"> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 </head>
 
 <body>
@@ -61,6 +62,17 @@
 
     }, 2000)
 
+
+    new Vue({
+      el: '#content',
+      data: {
+        name: 11111
+      },
+      created() {
+        console.log(this.name)
+        this.getList();
+      }
+    })
   </script>
   <!-- <script src="errorsrc.js"></script> -->
 </body>
