@@ -20,7 +20,7 @@ import {
   custom
 } from './lib/custom';
 
-class monitor {
+class Monitor {
   constructor() {
     this.ajaxFocus = true
     this.blankFocus = true
@@ -33,6 +33,10 @@ class monitor {
 
 
   init(options) {
+    if (options.env !== 'prod') {
+      window.monitor = null
+      return
+    }
     this.ajaxFocus = options.ajax || this.ajaxFocus
     this.blankFocus = options.blank || this.blankFocus
     this.performanceFocus = options.performance || this.performanceFocus
@@ -76,7 +80,7 @@ class monitor {
   }
 }
 
-export default monitor
+export default Monitor
 
 
 

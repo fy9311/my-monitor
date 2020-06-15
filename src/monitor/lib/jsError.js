@@ -7,7 +7,6 @@ export function jsError() {
   window.addEventListener(
     "error",
     function (event) {
-      // console.log(event);
 
       let lastEvent = getLastEvent();
       let errData;
@@ -30,7 +29,7 @@ export function jsError() {
           message: event.message, // 报错信息
           filename: event.filename, // 报错文件
           position: `${event.lineno}:${event.colno}`, // 报错位置
-          stack: event.error.stack, // 错误堆栈信息
+          stack: event.stack, // 错误堆栈信息
           selector: lastEvent ? getSelector(lastEvent.path) : null, // 最后一个交互元素
         };
       }

@@ -25,6 +25,9 @@ export function ajaxError() {
     if (this.logData) {
       let startTime = Date.now(); // 记录开始时间
       let handler = (type) => (event) => {
+        if (this.status === 200) {
+          return
+        }
         let duration = Date.now() - startTime; // 计算持续时间
         let status = this.status;
         let statusText = this.statusText;

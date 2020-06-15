@@ -3,7 +3,7 @@ import tracker from "../utils/tracker.js";
 
 export function vueError() {
 
-  if (!Vue) {
+  if (!window.Vue) {
     console.log('并未检测到Vue实例')
     return
   }

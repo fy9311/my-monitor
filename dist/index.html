@@ -7,6 +7,7 @@
   <title>前端监控demo</title>
   <!-- <link href="http://123.asd/1.css" rel="stylesheet"> -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script src="../dist/bundle.js"></script>
 <script src="bundle.js"></script></head>
 
 <body>
@@ -32,6 +33,25 @@
       promise: true,
       vue: true
     })
+    function sendCustom() {
+      let data = {
+        kind: 'custom',
+        data: 'test'
+      }
+      track.sendCustom(data)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     // 
     function errorJs() {
       window.asd.error = 'error';
@@ -73,13 +93,7 @@
 
     }, 2000)
 
-    function sendCustom() {
-      let data = {
-        kind: 'custom',
-        data: 'test'
-      }
-      track.sendCustom(data)
-    }
+
 
     new Vue({
       el: '#content',

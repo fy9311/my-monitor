@@ -1,5 +1,5 @@
-import monitor from './monitor/index'
-export { monitor }
+import Monitor from './monitor/index'
+export { Monitor }
 
-window.monitor = monitor;
+window.monitor = Monitor;
 
