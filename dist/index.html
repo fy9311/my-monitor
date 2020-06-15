@@ -26,12 +26,7 @@
 
     let track = new monitor()
     track.init({
-      ajax: true,
-      blank: true,
-      performance: true,
-      js: true,
-      promise: true,
-      vue: true
+      env: 'prod'
     })
     function sendCustom() {
       let data = {
@@ -40,11 +35,6 @@
       }
       track.sendCustom(data)
     }
-
-
-
-
-
 
 
 
@@ -102,6 +92,16 @@
       },
       created() {
         this.getList();
+      },
+      mounted() {
+        this.test().then(() => {
+          console.log(asd)
+        })
+      },
+      methods: {
+        test() {
+          return Promise.resolve()
+        }
       }
     })
   </script>
