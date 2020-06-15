@@ -16,11 +16,22 @@
       <input onclick="errorPromise()" type="button" value="点击promise报错">
       <input onclick="successAjax()" type="button" value="点击ajax成功">
       <input onclick="errorAjax()" type="button" value="点击ajax报错">
+      <input type="button" name="" id="" value="custom" onclick="sendCustom()">
     </div>
     <div class="box1" style="word-break: break-all;height: 500px;background-color: aqua;"></div>
   </div>
 
   <script>
+
+    let track = new monitor()
+    track.init({
+      ajax: true,
+      blank: true,
+      performance: true,
+      js: true,
+      promise: true,
+      vue: true
+    })
     // 
     function errorJs() {
       window.asd.error = 'error';
@@ -62,6 +73,13 @@
 
     }, 2000)
 
+    function sendCustom() {
+      let data = {
+        kind: 'custom',
+        data: 'test'
+      }
+      track.sendCustom(data)
+    }
 
     new Vue({
       el: '#content',

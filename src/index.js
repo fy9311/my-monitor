@@ -1,1 +1,5 @@
-import "./monitor/index.js"
+import monitor from './monitor/index'
+export { monitor }
+
+window.monitor = monitor;
+
