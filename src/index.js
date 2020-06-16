@@ -1,5 +1,5 @@
-import Monitor from './monitor/index'
-export { Monitor }
+import Monitor from "./Monitor.js";
 
-window.monitor = Monitor;
+export default Monitor
 
+window.Monitor = Monitor

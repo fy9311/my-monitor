@@ -1,9 +1,8 @@
 
 import tracker from "../utils/tracker.js";
 
-export function vueError() {
-
-  if (!window.Vue) {
+export function vueError(config, Vue) {
+  if (!Vue) {
     console.log('并未检测到Vue实例')
     return
   }
