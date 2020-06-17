@@ -1,5 +1,5 @@
-import tracker from "../utils/tracker";
-export function ajaxError() {
+import Tracker from "../utils/tracker";
+export function ajaxError(config) {
   // 缓存当前全局方法
   let XMLHttpRequest = window.XMLHttpRequest;
 
@@ -7,8 +7,8 @@ export function ajaxError() {
   let oldOpen = XMLHttpRequest.prototype.open;
 
   XMLHttpRequest.prototype.open = function (method, url, async) {
-    // logstores 数据仓库相关   sockjs webpack相关
-    if (!url.match(/logstores/) && !url.match(/sockjs/)) {
+    //   sockjs webpack相关
+    if (!url.match(/sockjs/) && !url.match(config.url)) {
       this.logData = {
         method,
         url,
@@ -25,13 +25,14 @@ export function ajaxError() {
     if (this.logData) {
       let startTime = Date.now(); // 记录开始时间
       let handler = (type) => (event) => {
+
         if (this.status === 200) {
           return
         }
         let duration = Date.now() - startTime; // 计算持续时间
         let status = this.status;
         let statusText = this.statusText;
-        tracker.send({
+        new Tracker(config).send({
           kind: "stability", // 类别-稳定性
           type: "xhr", // 问题类型-请求问题
           errorType: type, // 错误类型,

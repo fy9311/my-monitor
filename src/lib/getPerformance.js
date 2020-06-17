@@ -1,6 +1,5 @@
 // 加载时间
-import tracker from "../utils/tracker";
-import onload from '../utils/onload';
+import Tracker from "../utils/tracker";
 
 
 
@@ -89,7 +88,7 @@ const pagePerformance = {
 
 
 
-export function getPerformance() {
+export function getPerformance(config) {
   let resourceList = pagePerformance.getEntries()
   let performance = pagePerformance.getTiming()
 
@@ -100,6 +99,6 @@ export function getPerformance() {
     resourceList: JSON.stringify(resourceList),
   };
   setTimeout(() => {
-    tracker.send(result)
+    new Tracker(config).send(result)
   }, 5000)
 }

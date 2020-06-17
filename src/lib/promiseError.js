@@ -1,8 +1,8 @@
 import getLastEvent from "../utils/getLastEvent.js";
 import { getSelector } from "../utils/getSelector.js";
-import tracker from "../utils/tracker.js";
+import Tracker from "../utils/tracker.js";
 
-export function promiseError() {
+export function promiseError(config) {
 
 
   // 捕获promise错误
@@ -32,7 +32,7 @@ export function promiseError() {
         }
       }
 
-      tracker.send({
+      new Tracker(config).send({
         //未捕获的promise错误
         kind: "stability", //稳定性指标
         type: "error", //jsError

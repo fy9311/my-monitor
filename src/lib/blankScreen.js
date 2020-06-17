@@ -1,12 +1,14 @@
 // 空白屏
-import tracker from "../utils/tracker";
+import Tracker from "../utils/tracker";
 import onload from '../utils/onload';
 
-export function blankScreen() {
+export function blankScreen(config) {
   // 哪些算是空白节点
   let wrapperElements = ["html", "body", "#content", ".box"];
   // 空节点计数
   let emptyPoints = 0;
+
+
 
   function isWrapper(el) {
     let selector = getSelector(el);
@@ -40,13 +42,12 @@ export function blankScreen() {
       isWrapper(yElements[0])
     }
     if (emptyPoints > 16) {
-      tracker.send({
+      new Tracker(config).send({
         kind: 'stability',
         type: 'blank screen',
         emptyPoints,
         screen: window.screen.width + 'x' + window.screen.height,
         viewPoint: window.innerWidth + 'x' + window.innerHeight,
-
       })
     }
   })

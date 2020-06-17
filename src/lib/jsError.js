@@ -1,8 +1,8 @@
 import getLastEvent from "../utils/getLastEvent.js";
 import { getSelector } from "../utils/getSelector.js";
-import tracker from "../utils/tracker.js";
+import Tracker from "../utils/tracker.js";
 
-export function jsError() {
+export function jsError(config) {
   // 监听全局未捕获错误
   window.addEventListener(
     "error",
@@ -36,7 +36,7 @@ export function jsError() {
       // console.log(errData);
 
       // 上报数据
-      tracker.send(errData);
+      new Tracker(config).send(errData);
     },
     true
   );

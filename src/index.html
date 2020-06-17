@@ -23,11 +23,21 @@
   </div>
 
   <script>
-
-    let track = new Monitor()
-    track.init({
-      env: 'prod'
+    console.log(Vue)
+    let track = new Monitor({
+      env: 'prod',
+      url: 'http://localhost:8888',
+      appId: 'test',
+      vueErr: true,
+      ajax: true,
+      js: true,
+      promise: true,
+      blank: true,
+      instance: Vue,
+      performance: true,
+      custom: true
     })
+
     function sendCustom() {
       let data = {
         kind: 'custom',
@@ -97,6 +107,18 @@
         this.test().then(() => {
           console.log(asd)
         })
+
+        setTimeout(() => {
+          throw new Error('test111')
+        }, 3000)
+
+        setTimeout(() => {
+          try {
+            console.log(hahahha)
+          } catch (error) {
+            throw error
+          }
+        }, 0)
       },
       methods: {
         test() {

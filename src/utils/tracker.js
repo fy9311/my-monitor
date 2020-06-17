@@ -1,9 +1,4 @@
-// 服务主机名
-const host = 'cn-chengdu.log.aliyuncs.com';
-// 项目名
-const project = 'my-monitor';
-// 存储空间名
-const logstoreName = 'monitor-store';
+
 // 获取用户浏览器信息
 import userAgent from 'user-agent'
 
@@ -11,56 +6,39 @@ import userAgent from 'user-agent'
 function getExtraData() {
   return {
     title: document.title,
-    // url: location.url,
+    href: location.url,
     timeStamp: Date.now(),
     userAgent: userAgent.parse(navigator.userAgent).name
   }
 }
 
-class sendTracker {
-  constructor() {
+class Tracker {
+  constructor(options) {
     // 坑点，如果不加http://则会把当前域名加进去
-    this.url = `http://${project}.${host}/logstores/${logstoreName}/track`; // 上报路径
-    this.xhr = new XMLHttpRequest;
+    this.url = options.url; // 上报路径
+    this.appId = options.appId
+
   }
 
   send(data = {}) {
+    let xhr = new XMLHttpRequest();
     let extraData = getExtraData();
     let logs = {
-      ...extraData,
-      ...data
-    };
-    for (let key in logs) {
-      if (typeof logs[key] === 'number') {
-        logs[key] = `${logs[key]}`;
+      errData: {
+        ...extraData,
+        ...data
       }
     }
 
-    let body = JSON.stringify({
-      __logs__: [logs]
-    });
+    let body = JSON.stringify(logs);
 
-    this.xhr.open('POST', this.url, true);
-    // 版本
-    this.xhr.setRequestHeader('x-log-apiversion', '0.6.0');
-    // 请求体大小
-    this.xhr.setRequestHeader('x-log-bodyrawsize', body.length);
-    // 压缩算法
-    // this.xhr.setRequestHeader('x-log-compresstype', 'lz4');
+    xhr.open('POST', this.url, true);
     // 内容类型
-    this.xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Content-Type', 'application/json');
     // 发送
-    this.xhr.send(body);
-    // 错误监听
-    this.xhr.onerror = () => {
-      // console.log(this.xhr.response);
-    };
-    // 完成监听
-    this.xhr.onload = () => {
-      // console.log(this.xhr.response);
-    }
+    xhr.send(body);
 
   }
 }
 
-export default new sendTracker();
+export default Tracker;

@@ -27,11 +27,11 @@ class Monitor {
     this.performanceErr = options.performance || false
     this.jsErr = options.js || false
     this.promiseErr = options.promise || false
-    this.vueErr = options.vue || false
+    this.vueErr = options.vueErr || false
     this.customErr = options.custom || false
     this.appId = options.appId || 'test'
     this.url = options.url || 'test-url'
-    this.env = options.env || 'dev'
+    this.env = options.env || false
     this.instance = options.instance || null
     this.config = {
       url: this.url,
@@ -42,10 +42,12 @@ class Monitor {
 
 
   init() {
-    if (this.env !== 'prod') {
+    if (this.env) {
       window.monitor = null
       return
     }
+
+
 
     if (this.ajaxErr) {
       ajaxError(this.config)
@@ -74,7 +76,7 @@ class Monitor {
 
   sendCustom(params) {
     if (this.customErr) {
-      custom(params)
+      custom(this.config, params)
     }
   }
 }

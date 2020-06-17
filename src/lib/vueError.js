@@ -1,5 +1,5 @@
 
-import tracker from "../utils/tracker.js";
+import Tracker from "../utils/tracker.js";
 
 export function vueError(config, Vue) {
   if (!Vue) {
@@ -29,7 +29,7 @@ export function vueError(config, Vue) {
       stack: error.stack, // 错误堆栈信息
     };
 
-    tracker.send(errData)
+    new Tracker(config).send(errData)
   }
 
 }
