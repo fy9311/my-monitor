@@ -42,7 +42,7 @@ class Monitor {
 
 
   init() {
-    if (this.env) {
+    if (!this.env) {
       window.monitor = null
       return
     }
