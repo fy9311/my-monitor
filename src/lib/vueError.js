@@ -8,7 +8,6 @@ export function vueError(config, Vue) {
   }
 
   Vue.config.errorHandler = (error, vm, info) => {
-    // console.log(error, vm, info)
     let filename, lineno, colno
     if (error.stack) {
       const matchResult = error.stack.match(/at\s+(.+):(\d+):(\d+)/);

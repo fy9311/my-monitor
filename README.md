@@ -30,7 +30,6 @@ window.Monitor.sendCustom(data) // data为想要上报的数据
 8.支持api式上报
 
 # feature
-支持cdn
 上报队列
 上报率
 支持pv采集

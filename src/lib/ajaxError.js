@@ -34,7 +34,7 @@ export function ajaxError(config) {
         let statusText = this.statusText;
         new Tracker(config).send({
           kind: "stability", // 类别-稳定性
-          type: "xhr", // 问题类型-请求问题
+          type: `xhr -${type}`, // 问题类型-请求问题
           errorType: type, // 错误类型,
           pathname: this.logData.url, // 请求路径
           duration: duration, // 持续时间

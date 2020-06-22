@@ -23,10 +23,10 @@
   </div>
 
   <script>
-    console.log(Vue)
+
     let track = new Monitor({
       env: 'prod',
-      url: 'http://localhost:8888',
+      url: 'http://192.167.246.199:32001/common/webErrorLog/addError',
       appId: 'test',
       vueErr: true,
       ajax: true,
@@ -108,9 +108,9 @@
           console.log(asd)
         })
 
-        setTimeout(() => {
-          throw new Error('test111')
-        }, 3000)
+        // setTimeout(() => {
+        //   throw new Error('test111')
+        // }, 3000)
 
         setTimeout(() => {
           try {

@@ -2,16 +2,6 @@
 // 获取用户浏览器信息
 import userAgent from 'user-agent'
 
-// 为data添加额外信息
-function getExtraData() {
-  return {
-    title: document.title,
-    href: location.url,
-    timeStamp: Date.now(),
-    userAgent: userAgent.parse(navigator.userAgent).name
-  }
-}
-
 class Tracker {
   constructor(options) {
     // 坑点，如果不加http://则会把当前域名加进去
@@ -22,15 +12,15 @@ class Tracker {
 
   send(data = {}) {
     let xhr = new XMLHttpRequest();
-    let extraData = getExtraData();
     let logs = {
-      errData: {
-        ...extraData,
-        ...data
-      }
+      content: JSON.stringify({ ...data }),
+      application: this.appId,
+      stack: data.stack || '',
+      type: data.type,
+      url: location.href,
+      userAgent: userAgent.parse(navigator.userAgent).name
     }
-
-    let body = JSON.stringify(logs);
+    let body = JSON.stringify(logs)
 
     xhr.open('POST', this.url, true);
     // 内容类型
