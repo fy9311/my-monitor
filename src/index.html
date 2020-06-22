@@ -24,19 +24,7 @@
 
   <script>
 
-    let track = new Monitor({
-      env: 'prod',
-      url: 'http://192.167.246.199:32001/common/webErrorLog/addError',
-      appId: 'test',
-      vueErr: true,
-      ajax: true,
-      js: true,
-      promise: true,
-      blank: true,
-      instance: Vue,
-      performance: true,
-      custom: true
-    })
+
 
     function sendCustom() {
       let data = {
