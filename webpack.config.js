@@ -12,7 +12,7 @@ module.exports = {
   // 输出设置
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'Monitor.js',
     library: "monitorjs",  //类库名称
     libraryTarget: "umd",  //指定输出格式
     umdNamedDefine: true //会对UMD的构建过程中的AMD模块进行命名，否则就使用匿名的define

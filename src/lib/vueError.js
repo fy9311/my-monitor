@@ -29,6 +29,9 @@ export function vueError(config, Vue) {
     };
 
     new Tracker(config).send(errData)
+    if (config.console) {
+      throw error
+    }
   }
 
 }

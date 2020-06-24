@@ -42,6 +42,9 @@ export function ajaxError(config) {
           response: this.response ? JSON.stringify(this.response) : "", // 响应体
           params: body || "", // 参数
         });
+
+
+
       };
       this.addEventListener("error", handler("error"), false);
       this.addEventListener("load", handler("load"), false);

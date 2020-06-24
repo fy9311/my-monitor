@@ -7,7 +7,7 @@
   <title>前端监控demo</title>
   <!-- <link href="http://123.asd/1.css" rel="stylesheet"> -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-  <!-- <script src="../dist/bundle.js"></script> -->
+  <script src="../dist/Monitor.js"></script>
 </head>
 
 <body>
@@ -23,6 +23,21 @@
   </div>
 
   <script>
+
+    window.Monitor = new Monitor({
+      disabled: true,
+      console: false,
+      url: 'test',
+      appId: 'test',
+      vueErr: true,
+      ajax: true,
+      js: true,
+      promise: true,
+      blank: true,
+      instance: Vue,
+      performance: true,
+      custom: true
+    })
 
 
 
@@ -92,21 +107,21 @@
         this.getList();
       },
       mounted() {
-        this.test().then(() => {
-          console.log(asd)
-        })
+        // this.test().then(() => {
+        //   console.log(asd)
+        // })
 
         // setTimeout(() => {
         //   throw new Error('test111')
         // }, 3000)
 
-        setTimeout(() => {
-          try {
-            console.log(hahahha)
-          } catch (error) {
-            throw error
-          }
-        }, 0)
+        // setTimeout(() => {
+        //   try {
+        //     console.log(hahahha)
+        //   } catch (error) {
+        //     // throw error
+        //   }
+        // }, 0)
       },
       methods: {
         test() {

@@ -37,6 +37,7 @@ export function jsError(config) {
 
       // 上报数据
       new Tracker(config).send(errData);
+
     },
     true
   );

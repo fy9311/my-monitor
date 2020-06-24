@@ -1,21 +1,24 @@
 {
   "name": "my-monitor",
-  "version": "0.1.3",
+  "version": "0.1.10",
   "description": "fe-monitor-demo",
-  "main": "./src/index.js",
+  "main": "./dist/Monitor.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "dev": "webpack-dev-server"
   },
   "keywords": [],
+  "typings": "types/index.d.ts",
   "author": "FanYuan",
   "license": "ISC",
   "devDependencies": {
     "html-webpack-plugin": "^4.3.0",
-    "user-agent": "^1.0.4",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "user-agent": "^1.0.4"
   }
 }
